@@ -1,0 +1,512 @@
+Lista de exercicios(Ponteiros)
+Luiz Vitor Clementino 
+Lucas da Silva Leoncio
+
+Questão 1)
+
+O uso de ponteiros otimiza o desempenho do código tornando ele muito mais rapido e eficiente,
+pode ser usado para passar parâmetros para uma função por referência, indo diretamente no endereço
+de uma variavel e alterando seu valor de alguma forma. É usado para alocação dinâmica de memória,
+o que é muito importante para aumentar a velocidade de processamento do código.
+
+
+Questão 2)
+
+p == &i; // retorna 1
+*p - *q;// retorna -2
+**&p;// retorna 3
+3 - *p/(*q) + 7; retorna 4
+
+
+Questão 3)
+
+Exibido no printf: p ------> 4094// endereço de i
+		   *p+2 ---> 7
+		   **&p ---> 5
+		   3**p ---> 15
+		   **&p+4 -> 9
+
+
+Questão 4)
+
+int *p, *q;
+int i, j;
+
+Resultado das operações:
+
+p = i;// ilegal
+q = &j;// legal
+p = &*&i;// legal
+i = (*&)j;// ilegal
+i = *&j;// legal
+i = *&*&j;// legal
+q = *p;// ilegal
+i = (*p)++ + *q;// legal
+
+
+Questão 5)
+
+a) 20
+b) 29.0
+c) P
+d) e
+e) P
+f) e
+g) t
+h) 31
+i) 45
+j) 27
+l) 31
+m) 45
+n) 27
+
+
+Questão 6)
+
+
+p/ i = 0 --> 0/ 1.1/ 1.1/ endereço da posicão 0/ endereço da posição 0 
+p/ i = 1 --> 1/ 2.2/ 2.2/ endereço da posicão 1/ endereço da posição 1 
+p/ i = 2 --> 2/ 3.3/ 3.3/ endereço da posicão 2/ endereço da posição 2 
+p/ i = 3 --> 3/ 4.4/ 4.4/ endereço da posicão 3/ endereço da posição 3 
+p/ i = 4 --> 4/ 5.5/ 5.5/ endereço da posicão 4/ endereço da posição 4 
+
+
+Questão 7)
+
+--> A primeira expressão referencia o valor do terceiro elemento do vetor
+--> As outras acessam outras valores e endereços de outras posições do vetor
+
+
+Questão 8)
+
+Expressão 1 --> Válida
+Expressão 2 --> Inválida: não é possivel fazer um pós-incremento no vetor dessa forma
+Expressão 3 --> Inválida: não é possivel fazer um pré-incremento no vetor dessa forma
+Expressão 4 --> Válida
+
+
+
+Questão 9)
+
+Programa 1:
+	Exibe os valores do vetor vet --> 4, 9, 13
+Programa 2:
+	Exibe os endereços de cada posição do vetor vet
+
+
+
+Questão 10)
+
+P/ x como um char:
+	x+1 = 4093
+	x+2 = 4094
+	x+3 = 4095
+P/ x como um int:
+	x+1 = 4094
+	x+2 = 4096
+	x+3 = 4098
+P/ x como um float:
+	x+1 = 4096
+	x+2 = 4100
+	x+3 = 4104
+P/ x como um double:
+	x+1 = 4100
+	x+2 = 4108
+	x+3 = 4116
+
+
+
+
+Questão 11)
+
+---> As respostas foram corretas pelo funcionamento do vetores, mas no computador um variavel do tipo int tem 4 bytes
+---> Segue abaixo o código:
+
+
+#include <stdio.h>
+
+int main(void)
+{
+    char xc[4];
+    printf("PARA O TIPO CHAR:\n");
+    printf("Endereco de x = %d\n", xc);
+    printf("Endereco de x + 1 = %d\n", xc+1);
+    printf("Endereco de x + 2 = %d\n", xc+2);
+    printf("Endereco de x + 3 = %d\n\n", xc+3);
+
+    int xi[4];
+    printf("PARA O TIPO INT:\n");
+    printf("Endereco de x = %d\n", xi);
+    printf("Endereco de x + 1 = %d\n", xi+1);
+    printf("Endereco de x + 2 = %d\n", xi+2);
+    printf("Endereco de x + 3 = %d\n\n", xi+3);
+
+    float xf[4];
+    printf("PARA O TIPO FLOAT:\n");
+    printf("Endereco de x = %d\n", xf);
+    printf("Endereco de x + 1 = %d\n", xf+1);
+    printf("Endereco de x + 2 = %d\n", xf+2);
+    printf("Endereco de x + 3 = %d\n\n", xf+3);
+
+    double xd[4];
+    printf("PARA O TIPO DOUBLE:\n");
+    printf("Endereco de x = %d\n", xd);
+    printf("Endereco de x + 1 = %d\n", xd+1);
+    printf("Endereco de x + 2 = %d\n", xd+2);
+    printf("Endereco de x + 3 = %d\n\n", xd+3);
+
+    return 0;
+}
+
+
+
+
+Questão 12)
+
+float aloha[10], coisas[10][5], *pf, value = 2.2;
+int i=3;
+
+aloha[2] = value;          // VÁLIDO
+scanf("%f", &aloha);       // VÁLIDO
+aloha = value";            // INVÁLIDO
+printf("%f", aloha);       // VÁLIDO
+coisas[4][4] = aloha[3];   // VÁLIDO
+coisas[5] = aloha;         // INVÁLIDO
+pf = value;                // INVÁLIDO
+pf = aloha;                // VÁLIDO
+
+
+
+
+Questão 13)
+
+
+Um ponteiro para uma função é um ponteiro que aponta para funções que tem o mesmo prototipo, logo, o ponteiro armazena endereços de funcoes
+
+EXEMPLO:
+#include <stdio.h>
+
+int mult(int a, int b){ // funcao que calcula a multiplicão de dois numeros
+    int result = a*b;
+    return result;
+}
+
+int main()
+{
+    int (*p)(int a, int b);//p aponta para o endereço da funcao que tera esse prototipo
+    p = mult;
+    printf("multiplicacao = %d\n", p(2,3));
+
+
+  return 0;
+}
+
+
+
+
+Questão 14)
+
+EIS A FUNÇÃO:
+
+
+#include <stdio.h>
+#include <stdlib.h>
+
+void ordenar(float *v, int n){
+    int i, j, min, aux;
+    for(i = 0; i < n; i++){
+        for(j = 0; j < n-1; j++){
+            if(v[j] > v[j+1]){
+                aux = v[j+1];
+                v[j+1] = v[j];
+                v[j] = aux;
+            }
+        }
+    }
+}
+
+int main()
+{
+    int n, i, j;
+    float *p;
+    n = 5;
+    p = (float*)malloc(n*sizeof(float));
+
+    for(j = 0; j < n; j++){
+        scanf("%f", &p[j]);
+    }
+
+    for(i = 0; i < n; i++){
+        printf("%f ", *(p + i));
+    }
+    printf("\n");
+
+    ordenar(p,n);
+
+    for(i = 0; i < n; i++){
+        printf("%f ", *(p + i));
+    }
+
+    return 0;
+}
+
+
+
+
+
+Questão 15)
+
+
+#include <stdio.h>
+#include <stdlib.h>
+
+int compare (const void * a, const void * b)
+{
+  return ( *(int*)a - *(int*)b );
+}
+
+int main(){
+    int n, i, j;
+    float *p;// p é um ponteiro que aponta para um inteiro
+    n = 5;
+    p = (float*)malloc(n*sizeof(float));// p aponta para um bloco de memoria que aloca o tamanho para armazenar n dados do tipo float
+
+    for(j = 0; j < n; j++){
+        scanf("%f", &p[j]);// o usuario atribui os valores que deseja que estejam ordenados
+    }
+    for(i = 0; i < n; i++){
+        printf("%f ", p[i]);
+    }
+    printf("\n");
+
+    qsort(p, n, sizeof(float), compare);// para funcão qsort o primeiro argumento é o nome do vetor que contem os valores
+    // que nesse caso é o ponteiro p que aponta pata o bloco de memoria que contem os valores
+    //o segundo argumento é a quantidade de valores que tenho
+    //o terceiro argumento é o tamanho em bytes de cada tipo de dado dos valores
+    // o quarto e ultimo argumento aponta para a funcao que compara os valores para fazer a troca na qsort
+
+    for(i = 0; i < n; i++){
+        printf("%f ", p[i]);// exibe p ja ordenado
+    }
+
+  return 0;
+}
+
+
+
+
+
+
+Questão 16)
+
+
+#include <stdio.h>
+#include <stdlib.h>
+
+int compare(const void * a, const void * b)
+{
+  return (*(int*)a - *(int*)b);
+}
+
+int main(){
+    int n, i, j;
+    // o ponteiro ordem vai aponttar para funções que tem esse prototipo, nesse caso só a função qsort
+    int (*ordem)(void* base, size_t num, size_t size, int (*compar)(const void*, const void*));
+
+    float *p;// p é um ponteiro que aponta para um inteiro
+    n = 5;
+    p = (float*)malloc(n*sizeof(float));// p aponta para um bloco de memoria que aloca o tamanho para armazenar n dados do tipo float
+
+    for(j = 0; j < n; j++){
+        scanf("%f", &p[j]);// o usuario atribui os valores que deseja que estejam ordenados
+    }
+    for(i = 0; i < n; i++){
+        printf("%f ", p[i]);
+    }
+    printf("\n");
+
+    ordem = qsort;// o ponteiro ordem aponta para a funcao qsort
+
+    ordem(p, n, sizeof(float), compare);
+
+    for(i = 0; i < n; i++){
+        printf("%f ", p[i]);// exibe p ja ordenado
+    }
+
+  return 0;
+}
+
+
+
+
+
+
+
+
+Questão 17)
+
+================ TEMPO DE EXECUÇÃO PARA A QUESTÃO 15 ======================
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+int compare (const void * a, const void * b)
+{
+  return ( *(int*)a - *(int*)b );
+}
+
+int main(){
+    clock_t t1, t2;
+    t1 = clock();
+    int n, i, j;
+    float *p;// p é um ponteiro que aponta para um inteiro
+    n = 5;
+    p = (float*)malloc(n*sizeof(float));// p aponta para um bloco de memoria que aloca o tamanho para armazenar n dados do tipo float
+
+    for(j = 0; j < n; j++){
+        scanf("%f", &p[j]);// o usuario atribui os valores que deseja que estejam ordenados
+    }
+    for(i = 0; i < n; i++){
+        printf("%f ", p[i]);
+    }
+    printf("\n");
+
+    qsort(p, n, sizeof(float), compare);// para funcão qsort o primeiro argumento é o nome do vetor que contem os valores
+    // que nesse caso é o ponteiro p que aponta pata o bloco de memoria que contem os valores
+    //o segundo argumento é a quantidade de valores que tenho
+    //o terceiro argumento é o tamanho em bytes de cada tipo de dado dos valores
+    // o quarto e ultimo argumento aponta para a funcao que compara os valores para fazer a troca na qsort
+    t2 = clock();
+    for(i = 0; i < n; i++){
+        printf("%f ", p[i]);// exibe p ja ordenado
+    }
+    printf("\n");
+    printf("%d", (t2-t1)/CLOCKS_PER_SEC);
+
+  return 0;
+}
+
+
+=================================   FIM   ================================
+
+
+
+================= TEMPO DE EXECUÇÃO PARA A QUESTÃO 16 ===================== 
+
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+int compare(const void * a, const void * b)
+{
+  return (*(int*)a - *(int*)b);
+}
+
+int main(){
+    clock_t t;
+    t = clock();
+    int n, i, j;
+    // o ponteiro ordem vai aponttar para funções que tem esse prototipo, nesse caso só a função qsort
+    int (*ordem)(void* base, size_t num, size_t size, int (*compar)(const void*, const void*));
+
+    float *p;// p é um ponteiro que aponta para um inteiro
+    n = 5;
+    p = (float*)malloc(n*sizeof(float));// p aponta para um bloco de memoria que aloca o tamanho para armazenar n dados do tipo float
+
+    for(j = 0; j < n; j++){
+        scanf("%f", &p[j]);// o usuario atribui os valores que deseja que estejam ordenados
+    }
+    for(i = 0; i < n; i++){
+        printf("%f ", p[i]);
+    }
+    printf("\n");
+
+    ordem = qsort;// o ponteiro ordem aponta para a funcao qsort
+
+    ordem(p, n, sizeof(float), compare);
+
+    for(i = 0; i < n; i++){
+        printf("%f ", p[i]);// exibe p ja ordenado
+    }
+    printf("\n");
+    t = clock() - t;
+    printf("TEMPO DE EXECUCAO DO PROGRAMA: %f", t/CLOCKS_PER_SEC);
+
+  return 0;
+}
+
+
+    
+
+
+================================ FIM ===============================================
+
+
+
+
+
+Questão 18)
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+void soma(int *a,int *b,int *c,int x,int y);
+int main()
+{
+    int tam, tam2, cont,tamt;
+    printf("Digite os tamanhos dos vetores: ");
+    scanf("%d",&tam);
+    scanf("%d",&tam2);
+    int *vetor1, *vetor2, *vetor3;
+    //Alocação dos vetores. Sendo que o treceiro é o vetor resultante.
+    vetor1=(int*)malloc(tam*sizeof(int));
+    vetor2=(int*)malloc(tam2*sizeof(int));
+    vetor3=(int*)malloc(tam2*sizeof(int));
+    srand(time(0));
+    //Atribuição dos elementos dos vetores.
+    for(cont=0;cont<tam;cont++)
+    {
+        vetor1[cont]=rand()%10;
+    }
+    for(cont=0;cont<tam2;cont++)
+    {
+        vetor2[cont]=rand()%10;
+    }
+
+    for(cont=0;cont<tam2;cont++)
+    {
+        printf("%d ",vetor1[cont]);
+    }
+    printf("\n");
+
+    for(cont=0;cont<tam2;cont++)
+    {
+        printf("%d ",vetor2[cont]);
+    }
+    printf("\n");
+
+    soma(vetor1,vetor2,vetor3,tam,tam2);
+    for(cont=0;cont<tam2;cont++)
+    {
+        printf("%d",vetor3[cont]);
+        printf(" ");
+    }
+
+
+    printf("\n");
+    return 0;
+
+}
+//Função da soma de dois vetores. Assumindo que ambos tenham o mesmo tamanho.
+void soma(int *a,int *b,int *c,int x,int y)
+{
+    int i;
+    for(i=0;i<x;i++)
+    {
+        c[i]=a[i]+b[i];
+    }
+}
+
